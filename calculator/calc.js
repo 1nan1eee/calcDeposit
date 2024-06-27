@@ -148,6 +148,7 @@ $(function () {
     });
   });
 });
+
 function initCalc() {
   if ($("#autoCost").length > 0 && $("#autoCost_val").length > 0) {
     var autoCost = parseInt($("#autoCost_val").val().replace(/\D+/g, ""));
