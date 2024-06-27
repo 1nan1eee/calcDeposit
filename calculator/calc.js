@@ -1,7 +1,8 @@
 $(function () {
   initCalc();
   calcKredit();
-  //some
+  //something
+  //изменения от васильны
   $("#autoCost_val").focusin(function () {
     var val_autoCost = $("#autoCost_val").val().replace(/\D+/g, "");
     var min_autoCost = $("#autoCost").attr("min-value-data");
