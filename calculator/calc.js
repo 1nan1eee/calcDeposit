@@ -5,7 +5,11 @@ $(function () {
   //изменения от васильны
   //comment
   //comment23232
+<<<<<<< HEAD
   //ААААА БЛЯТЬ СУКААВИАААААЛАЛАЗВВХАЗА
+=======
+  //ponos
+>>>>>>> 0c178321cd92ee1b8622c13d6e781df2a25f872e
   $("#autoCost_val").focusin(function () {
     var val_autoCost = $("#autoCost_val").val().replace(/\D+/g, "");
     var min_autoCost = $("#autoCost").attr("min-value-data");
