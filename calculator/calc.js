@@ -2,7 +2,11 @@ $(function () {
   initCalc();
   calcKredit();
   //something
+<<<<<<< HEAD
   //изменения от васильны
+=======
+  //comment
+>>>>>>> 8997bc5e80cabd81c746be445b0ebeb1b504b9a3
   $("#autoCost_val").focusin(function () {
     var val_autoCost = $("#autoCost_val").val().replace(/\D+/g, "");
     var min_autoCost = $("#autoCost").attr("min-value-data");
