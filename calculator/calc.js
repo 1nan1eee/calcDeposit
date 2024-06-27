@@ -5,13 +5,9 @@ $(function () {
   //изменения от васильны
   //comment
   //comment23232
-<<<<<<< HEAD
   //ААААА БЛЯТЬ СУКААВИАААААЛАЛАЗВВХАЗА
   //ponos
-=======
   //ponos сука блять что за пизда я уже не могу кто это нахуй придумал, ебала я этот фронт энд, пойду курьером работать
-
->>>>>>> 6e0c427658826bf082329d85982f18b0c86e9380
   $("#autoCost_val").focusin(function () {
     var val_autoCost = $("#autoCost_val").val().replace(/\D+/g, "");
     var min_autoCost = $("#autoCost").attr("min-value-data");
