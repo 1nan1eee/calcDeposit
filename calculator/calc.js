@@ -5,6 +5,7 @@ $(function () {
   //изменения от васильны
   //comment
   //comment23232
+  //ААААА БЛЯТЬ СУКААВИАААААЛАЛАЗВВХАЗА
   $("#autoCost_val").focusin(function () {
     var val_autoCost = $("#autoCost_val").val().replace(/\D+/g, "");
     var min_autoCost = $("#autoCost").attr("min-value-data");
