@@ -1,0 +1,72 @@
+<div class="col-xs-12 flx">
+    <div class="calc-block-left">
+      <div class="calc">
+        <div class="pad calc_block active">
+         <div class="info_text qestion-line1">
+           <span class="text">Стоимость автомобиля</span>
+           
+         </div>
+         <div class="h2 deposit">
+           <input id="autoCost_val" type="text" value="1 000 000 руб.">
+           <div class="err_autoCost_val" style="display: none;">Введите стоимость автомобиля от 150 000 до 5 000 000 руб.</div>
+         </div>
+         <div class="com_sistem"></div>
+         <div class="runner">
+             <div id="autoCost" class="range_decor ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" min="150000" max="5000000" min-value-data="150000" value="1000000" step="500"><div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min" style="width: 17.5258%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 17.5258%;"></span></div>
+         </div>
+         <div class="info_text qestion-line1">
+           <span class="text">Первоначальный взнос</span>
+           <span class="inf_icon">
+             <span class="info_up firstPayment">Минимальная сумма первого взноса – <b>10%</b> от стоимости автомобиля</span>
+           </span>
+         </div>
+         <div class="h2 deposit">
+           <input id="firstPayment_val" type="text" value="300 000 руб.">
+           <div class="err_firstPayment_val"></div>
+         </div>
+         <div class="com_sistem"></div>
+         <div class="runner">
+             <div id="firstPayment" class="range_decor ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" min="60000" max="1000000" min-value-data="100000" value="300000" step="500"><div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min" style="width: 0%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span></div>
+         </div>
+         <div class="info_text qestion-line1">
+           <span class="text">Срок кредита</span>
+         </div>
+         <div class="h2 deposit">
+           <input id="duration_val" type="text" value="24 мес.">
+           <div class="err_duration_val"></div>
+         </div>
+         <div class="com_sistem"></div>
+         <div class="runner">
+             <div id="duration" class="range_decor ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" min="12" max="84" min-value-data="12" value="24" step="1"><div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min" style="width: 16.6667%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 16.6667%;"></span></div>
+         </div>
+         <div class="checkbox_box mt-10 d_ib">
+           <input type="checkbox" id="izhcom_card" name="calc_multilend_checkbox" checked="">
+           <label for="izhcom_card">
+             <div class="info_text qestion-line1">
+               <span class="text">Участник «зарплатного проекта»</span>
+               <span class="inf_icon">
+                 <span class="info_up">Наличие зарплатной карты Датабанка (Ижкомбанка) влияет на размер % ставки</span>
+               </span>
+             </div>
+           </label>
+         </div>
+         <p class="info-h">*Информация носит справочный характер и не является публичной офертой</p>
+        </div>
+      </div>
+    </div>
+   <div class="calc-block-right">
+     <p class="p_ff_pts mt-0">Ваш ежемесячный платёж составит:</p>
+     <p class="p_ff_dt"><span id="payments">45 587</span><span class="rouble">a</span><span class="monthly">/мес.</span></p>
+     <div class="info_text mt-15">
+       <span class="text deposit_result">При ставке <span>19.5%</span> годовых</span>
+                     </div>
+     <!-- <div class="h1 deposit_result"><span>13 </span> %</div> -->
+     <p class="p_ff_pts">Сумма кредита:</p>
+     <p class="p_ff_dt"><span id="persent">900 000</span><span class="rouble">a</span></p>
+     <!-- <p class="p_ff_pts">Сумма ежемесячного платежа:</p>
+     <p class="p_ff_dt"><span id="payments">300 000</span><span class="rouble">&#8399;</span></p> -->
+     <p class="p_ff_pts">Срок кредита:</p>
+     <p class="p_ff_dt">до 7 лет</p>
+                   <a href="#" class="btn blue popup esia-popup-link mt-30">Заявка на кредит</a>
+    </div>
+  </div>
