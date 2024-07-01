@@ -144,11 +144,22 @@
     <script>
       // ЭТО КОД КАЛЬКУЛЯТОРА
       function calculate() {
-        var amount = parseInt($("#deposit_val").val(), 10);
+        var amount = parseInt($("#deposit_val").val().replace(/\s/g, ""), 10);
         var term = parseInt($("#term").val(), 10);
         var rate = 0.17;
         var daysInYear = new Date().getFullYear() % 4 === 0 ? 366 : 365;
-        var income = ((amount * rate) / daysInYear) * (term * 30);
+        var daysInTerm;
+
+        // Определение количества дней в зависимости от срока
+        if (term === 3) {
+          daysInTerm = 91; // 3 месяца
+        } else if (term === 6) {
+          daysInTerm = 91 * 2; // 6 месяцев
+        } else if (term === 12) {
+          daysInTerm = 91 * 4; // 12 месяцев
+        }
+
+        var income = ((amount * rate) / daysInYear) * daysInTerm;
 
         $("#months").text(term);
         $("#finalAmount").text((amount + income).toFixed(2));
