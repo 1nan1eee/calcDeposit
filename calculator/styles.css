@@ -12851,7 +12851,8 @@ a:focus, a, a:active {
 }
 
 .deposit input,  .calc input {
-	/* width: 150px; */
+	width: 100%; 
+  font-size: 100%;
 	border: 1px solid #fff;
     padding: 0 10px;
 	border-radius: 5px;
@@ -17666,8 +17667,11 @@ yx-axis
 .deposit input,
 .calc input{
 	padding: 0;
-	width: 200px;
-	font-family: "DinText";
+	width: 100%;
+  font-size: 29px;
+	font-family: "PT Sans";
+  color: #00247d;
+  font-weight: bold;
 }
 .offer {
 	min-height: 48px;
@@ -17704,8 +17708,8 @@ footer{
 .calc .runner,
 .range_decor,
 .ui-slider{
-	margin-top: 25px;
-    margin-bottom: 40px;
+	margin-top: 20px;
+    margin-bottom: 20px;
 }
 .com_sistem{
 	display: none;
@@ -17797,6 +17801,8 @@ footer{
   
   .select-wrapper-popup {
       position: relative;
+      margin-top: 10px;
+      margin-bottom: 10px;
   }
   
   .select-wrapper-popup::before {
