@@ -696,6 +696,18 @@ font-size: 48px;
 font-weight: bold;
 line-height: 58px;
 }
+#savings{
+color: #FFFFFF;
+font-family: "DinText";
+font-size: 48px;
+font-weight: bold;
+line-height: 58px;
+}
+#savings + .rouble{
+font-size: 48px;
+font-weight: bold;
+line-height: 58px;
+}
 .monthly{
 font-size: 18px;
 line-height: 24px;
