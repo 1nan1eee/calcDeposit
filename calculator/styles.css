@@ -102,6 +102,15 @@ text-align: center;
 max-width: 600px;
 margin: 0 auto;
 }
+
+.info_text.qestion-line1 .text {
+    color: #494949;
+    font-family: "PT Sans";
+    font-size: 14px;
+    line-height: 1.5;
+    vertical-align: bottom;
+}
+
 .last_contacts_block .btn {
 margin-top: 40px;
 margin-bottom: 30px;
