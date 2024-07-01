@@ -9,7 +9,7 @@
         <div class="calc">
           <div class="pad calc_block active">
             <div class="info_text qestion-line1">
-              <span class="text">Сумма при открытии вклада</span>
+              <span class="text">Сумма</span>
             </div>
             <div class="h2_deposit">
               <input id="deposit_val" type="text" value="5 000 руб." />
@@ -17,7 +17,10 @@
             </div>
             <div class="com_sistem"></div>
             <div class="runner">
-              <div id="deposit" class="range_decor ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" min="5000" max="5000000" min-value-data="5000" value="1000000" step="500"><div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min" style="width: 17.5258%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 17.5258%;"></span></div>
+              <div id="autoCost" class="range_decor ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" min="5000" max="5000000" min-value-data="5000" value="1000000" step="500">
+                <div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min" style="width: 17.5258%;"></div>
+                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 17.5258%;"></span>
+              </div>
             </div>
             <!-- <div class="info_text qestion-line1">
             <span class="text">Первоначальный взнос</span>
@@ -82,25 +85,22 @@
             <!-- </div> -->
             <!-- </label> -->
             <!-- </div> -->
-            <p class="info-h">
-              *Информация носит справочный характер и не является публичной
-              офертой
-            </p>
+            <p class="info-h">Информация носит справочный характер, не является офертой.</p>
           </div>
         </div>
       </div>
       <div class="calc-block-right">
-        <p class="p_ff_pts mt-0">К концу срока вы накопите:</p>
+        <p class="p_ff_pts mt-0">Накопите через n месяцев</p>
         <p class="p_ff_dt">
           <span id="savings">45 587</span><span class="rouble">а</span>
         </p>
         <div class="info_text mt-15">
           <span class="text deposit_result"
-            >При ставке <span>17%</span> годовых</span
+            >Ставка <span>17%</span> годовых</span
           >
         </div>
         <!-- <div class="h1 deposit_result"><span>13 </span> %</div> -->
-        <p class="p_ff_pts">Ваш доход составит:</p>
+        <p class="p_ff_pts">Доход</p>
         <p class="p_ff_dt">
           <span id="persent"></span><span class="rouble">а</span>
         </p>
