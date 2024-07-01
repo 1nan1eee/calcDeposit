@@ -60,53 +60,20 @@
             <div class="err_deposit_val">от 5 000 руб.</div>
             <div class="info_text qestion-line1">
               <span class="text">Срок вклада</span>
-              <div class="popup-list deposit_period">
-                <div class="popup-list">
-                  <!-- <span class="popup-list size" aria-hidden="true"
-                    ><svg
-                      width="24"
-                      height="24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M15.293 9.883a1 1 0 1 1 1.414 1.414L12 16.004l-4.707-4.707a1 1 0 0 1 1.414-1.414L12 13.176l3.293-3.293Z"
-                      ></path></svg
-                  ></span> -->
-                </div>
-                <select id="term">
+            </div>
+
+            <div class="select-wrapper-popup">
+              <div class="popup-list">
+                <select name="select-popup-list" id="term" class="select-popup">
                   <option value="3">3 месяца</option>
                   <option value="6">6 месяцев</option>
                   <option value="12">12 месяцев</option>
                 </select>
-
-                <!-- < <ul class="popup-list options" id="popup-list options unique">
-					<li class="popup-list option" id="popup-list-item-1" data-value="3" aria-selected="false">3 месяца</li>
-					<li class="popup-list option" id="popup-list-item-2" data-value="6" aria-selected="false">6 месяцев</li>
-					<li class="popup-list option" id="popup-list-item-3" data-value="12" aria-selected="false">12 месяцев</li>
-				</ul>> -->
               </div>
             </div>
-            <!-- <div class="h2 deposit"> -->
-            <!-- <input id="duration_val" type="text" value="24 мес."> -->
-            <!-- <div class="err_duration_val"></div> -->
-            <!-- </div> -->
+
             <div class="com_sistem"></div>
-            <!-- <div class="runner"> -->
-            <!-- <div id="duration" class="range_decor ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" min="12" max="84" min-value-data="12" value="24" step="1"><div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min" style="width: 16.6667%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 16.6667%;"></span></div> -->
-            <!-- </div> -->
-            <!-- <div class="checkbox_box mt-10 d_ib"> -->
-            <!-- <input type="checkbox" id="izhcom_card" name="calc_multilend_checkbox" checked=""> -->
-            <!-- <label for="izhcom_card"> -->
-            <!-- <div class="info_text qestion-line1"> -->
-            <!-- <span class="text">Участник «зарплатного проекта»</span> -->
-            <!-- <span class="inf_icon"> -->
-            <!-- <span class="info_up">Наличие зарплатной карты Датабанка (Ижкомбанка) влияет на размер % ставки</span> -->
-            <!-- </span> -->
-            <!-- </div> -->
-            <!-- </label> -->
-            <!-- </div> -->
+
             <p class="info-h">
               Информация носит справочный характер, не является офертой.
             </p>
@@ -116,7 +83,7 @@
       <div class="calc-block-right">
         <p class="p_ff_pts mt-0">Накопите через <span id="months">n</span></p>
         <p class="p_ff_dt">
-          <span id="finalAmount"></span><span class="rouble">а</span>
+          <span id="finalAmount"></span><span class="rouble"></span>
         </p>
         <div class="info_text mt-15">
           <span class="text deposit_result"
@@ -125,7 +92,7 @@
         </div>
         <p class="p_ff_pts">Доход</p>
         <p class="p_ff_dt">
-          <span id="income"></span><span class="rouble">а</span>
+          <span id="income"></span><span class="rouble"></span>
         </p>
         <!-- <div class="h1 deposit_result"><span>13 </span> %</div> -->
 
