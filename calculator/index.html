@@ -114,9 +114,7 @@
         </div>
       </div>
       <div class="calc-block-right">
-        <p class="p_ff_pts mt-0">
-          Накопите через <span id="months">n</span> месяцев
-        </p>
+        <p class="p_ff_pts mt-0">Накопите через <span id="months">n</span></p>
         <p class="p_ff_dt">
           <span id="finalAmount"></span><span class="rouble">а</span>
         </p>
@@ -158,7 +156,8 @@
 
         var income = ((amount * rate) / daysInYear) * daysInTerm;
 
-        $("#months").text(term);
+        var termText = term === 3 ? "месяца" : "месяцев";
+        $("#months").text(term + " " + termText);
         $("#finalAmount").text((amount + income).toFixed(0));
         $("#income").text(income.toFixed(0));
       }
