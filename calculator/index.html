@@ -75,7 +75,7 @@
                       ></path></svg
                   ></span> -->
                 </div>
-                <select>
+                <select id="term">
                   <option value="3">3 месяца</option>
                   <option value="6">6 месяцев</option>
                   <option value="12">12 месяцев</option>
@@ -114,9 +114,18 @@
         </div>
       </div>
       <div class="calc-block-right">
-        <p class="p_ff_pts mt-0">Накопите через n месяцев</p>
+        <p class="p_ff_pts mt-0">
+          Накопите через <span id="months">n</span> месяцев
+        </p>
         <p class="p_ff_dt">
-          <span id="savings">45 587</span><span class="rouble">а</span>
+          <span id="finalAmount">45587</span><span class="rouble">а</span>
+        </p>
+        <p class="p_ff_pts">Доход</p>
+        <p class="p_ff_dt">
+          <span id="persent"></span><span class="rouble">а</span>
+        </p>
+        <p class="p_ff_dt">
+          <span id="income"></span><span class="rouble">а</span>
         </p>
         <div class="info_text mt-15">
           <span class="text deposit_result"
@@ -124,10 +133,7 @@
           >
         </div>
         <!-- <div class="h1 deposit_result"><span>13 </span> %</div> -->
-        <p class="p_ff_pts">Доход</p>
-        <p class="p_ff_dt">
-          <span id="persent"></span><span class="rouble">а</span>
-        </p>
+
         <!-- <p class="p_ff_pts">Сумма ежемесячного платежа:</p>
         <p class="p_ff_dt"><span id="payments">300 000</span><span class="rouble">&#8399;</span></p> -->
         <a href="#" class="btn blue popup esia-popup-link mt-30"
@@ -135,7 +141,22 @@
         >
       </div>
     </div>
-    <script> // скрипт слайдера
+    <script>
+      // ЭТО КОД КАЛЬКУЛЯТОРА
+      function calculate() {
+        var amount = parseInt($("#deposit_val").val(), 10);
+        var term = parseInt($("#term").val(), 10);
+        var rate = 0.17;
+        var daysInYear = new Date().getFullYear() % 4 === 0 ? 366 : 365;
+        var income = ((amount * rate) / daysInYear) * (term * 30);
+
+        $("#months").text(term);
+        $("#finalAmount").text((amount + income).toFixed(2));
+        $("#income").text(income.toFixed(2));
+      }
+    </script>
+    <script>
+      // ЭТО КОД ПОЛЗУНКА
       $(function () {
         $("#autoCost").slider({
           range: "min",
@@ -144,10 +165,22 @@
           max: 5000000,
           step: 500,
           slide: function (event, ui) {
-            $("#deposit_val").val(ui.value + " руб.");
+            $("#deposit_val").val(ui.value); // Обновление поля ввода при изменении ползунка
+            calculate();
           },
         });
-        $("#deposit_val").val($("#autoCost").slider("value") + " руб.");
+
+        $("#deposit_val").change(function () {
+          var value = $(this).val().replace(/\D/g, ""); // Удаление нечисловых символов
+          value = parseInt(value, 10); // Преобразование строки в число
+          if (value >= 5000 && value <= 5000000) {
+            $("#autoCost").slider("value", value); // Обновление ползунка при изменении поля ввода
+            calculate();
+          }
+        });
+
+        $("#term").change(calculate);
+        calculate();
       });
     </script>
   </body>
