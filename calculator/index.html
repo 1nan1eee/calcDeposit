@@ -2,6 +2,13 @@
 <html lang="ru">
   <head>
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   </head>
   <body>
     <div class="col-xs-12 flx">
@@ -17,9 +24,24 @@
             </div>
             <div class="com_sistem"></div>
             <div class="runner">
-              <div id="autoCost" class="range_decor ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" min="5000" max="5000000" min-value-data="5000" value="1000000" step="500">
-                <div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min" style="width: 17.5258%;"></div>
-                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 17.5258%;"></span>
+              <div
+                id="autoCost"
+                class="range_decor ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
+                min="5000"
+                max="5000000"
+                min-value-data="5000"
+                value="1000000"
+                step="500"
+              >
+                <div
+                  class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min"
+                  style="width: 17.5258%"
+                ></div>
+                <span
+                  tabindex="0"
+                  class="ui-slider-handle ui-corner-all ui-state-default"
+                  style="left: 17.5258%"
+                ></span>
               </div>
             </div>
             <!-- <div class="info_text qestion-line1">
@@ -85,7 +107,9 @@
             <!-- </div> -->
             <!-- </label> -->
             <!-- </div> -->
-            <p class="info-h">Информация носит справочный характер, не является офертой.</p>
+            <p class="info-h">
+              Информация носит справочный характер, не является офертой.
+            </p>
           </div>
         </div>
       </div>
@@ -111,5 +135,20 @@
         >
       </div>
     </div>
+    <script>
+      $(function () {
+        $("#autoCost").slider({
+          range: "min",
+          value: 1000000,
+          min: 5000,
+          max: 5000000,
+          step: 500,
+          slide: function (event, ui) {
+            $("#deposit_val").val(ui.value + " руб.");
+          },
+        });
+        $("#deposit_val").val($("#autoCost").slider("value") + " руб.");
+      });
+    </script>
   </body>
 </html>
