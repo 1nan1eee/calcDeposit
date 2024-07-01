@@ -118,20 +118,17 @@
           Накопите через <span id="months">n</span> месяцев
         </p>
         <p class="p_ff_dt">
-          <span id="finalAmount">45587</span><span class="rouble">а</span>
-        </p>
-        <p class="p_ff_pts">Доход</p>
-        <p class="p_ff_dt">
-          <span id="persent"></span><span class="rouble">а</span>
-        </p>
-        <p class="p_ff_dt">
-          <span id="income"></span><span class="rouble">а</span>
+          <span id="finalAmount"></span><span class="rouble">а</span>
         </p>
         <div class="info_text mt-15">
           <span class="text deposit_result"
-            >Ставка <span>17%</span> годовых</span
+            >При ставке <span>17%</span> годовых</span
           >
         </div>
+        <p class="p_ff_pts">Доход</p>
+        <p class="p_ff_dt">
+          <span id="income"></span><span class="rouble">а</span>
+        </p>
         <!-- <div class="h1 deposit_result"><span>13 </span> %</div> -->
 
         <!-- <p class="p_ff_pts">Сумма ежемесячного платежа:</p>
@@ -162,8 +159,8 @@
         var income = ((amount * rate) / daysInYear) * daysInTerm;
 
         $("#months").text(term);
-        $("#finalAmount").text((amount + income).toFixed(2));
-        $("#income").text(income.toFixed(2));
+        $("#finalAmount").text((amount + income).toFixed(0));
+        $("#income").text(income.toFixed(0));
       }
     </script>
     <script>
