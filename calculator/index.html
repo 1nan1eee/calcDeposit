@@ -16,10 +16,10 @@
         <div class="calc">
           <div class="pad calc_block active">
             <div class="info_text qestion-line1">
-              <span class="text">Сумма</span>
+              <span class="text">Сумма при открытии вклада</span>
             </div>
             <div class="h2_deposit">
-              <input id="deposit_val" type="text" value="5000" />
+              <input id="deposit_val" type="text" value="5 000 руб." />
             </div>
             <div class="com_sistem"></div>
             <div class="runner">
@@ -29,7 +29,7 @@
                 min="5000"
                 max="5000000"
                 min-value-data="5000"
-                value="5000"
+                value="5000";
                 step="500"
               >
                 <div
@@ -41,12 +41,12 @@
                   class="ui-slider-handle ui-corner-all ui-state-default"
                   style="left: 0%"
                 ></span>
-                
               </div>
-             <div class="err_deposit_val">от 5 000 руб.</div> 
+              <div class="err_deposit_val">от 5 000 руб.</div>
             </div>
-            
+
             <div class="info_text qestion-line1">
+              <br>
               <span class="text">Срок вклада</span>
             </div>
             <!-- список сроков по вкладам -->
@@ -82,7 +82,7 @@
         <p class="p_ff_dt">
           <span id="income"></span><span class="rouble"></span>
         </p>
-        
+
         <a href="#" class="btn blue popup esia-popup-link mt-30"
           >Отправить заявку</a
         >
@@ -110,13 +110,25 @@
 
         var termText = term === 3 ? "месяца" : "месяцев";
         $("#months").text(term + " " + termText);
-        $("#finalAmount").text((amount + income).toFixed(0));
-        $("#income").text(income.toFixed(0));
+        $("#finalAmount").text(formatMoney((amount + income).toFixed(0))  + "₽");
+        $("#income").text(formatMoney(income.toFixed(0)) + "₽");
       }
+
+      // ЭТО КОД ДЛЯ ВЫВОДА СУММЫ С ПРОБЕЛАМИ
+
+      function formatMoney(amount) {
+    return amount.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
     </script>
     <script>
       // ЭТО КОД ПОЛЗУНКА
       $(function () {
+// ЭТО КОД ДЛЯ ВЫВОДА СУММЫ С ПРОБЕЛАМИ
+        function formatMoney(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    }
+
+
         $("#autoCost").slider({
           range: "min",
           value: 5000,
@@ -124,23 +136,36 @@
           max: 5000000,
           step: 500,
           slide: function (event, ui) {
-            $("#deposit_val").val(ui.value); // Обновление поля ввода при изменении ползунка
+            $("#deposit_val").val(formatMoney(ui.value) + " руб."); // Обновление поля ввода при изменении ползунка
+            
             calculate();
           },
-        });
+        }
+      
+      );
+      
 
         $("#deposit_val").change(function () {
           var value = $(this).val().replace(/\D/g, ""); // Удаление нечисловых символов
           value = parseInt(value, 10); // Преобразование строки в число
           if (value >= 5000 && value <= 5000000) {
             $("#autoCost").slider("value", value); // Обновление ползунка при изменении поля ввода
+            
             calculate();
           }
+          else {
+            // Если значение вне допустимого диапазона, обновляем поле ввода до последнего допустимого значения
+            $(this).val(formatMoney($("#autoCost").slider("value")));
+        }
+        $(this).val(formatMoney(value) + " руб.");
         });
 
         $("#term").change(calculate);
         calculate();
       });
+
+      
+
     </script>
   </body>
 </html>
