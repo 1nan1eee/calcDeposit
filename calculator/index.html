@@ -160,6 +160,7 @@
             value = value < 5000 ? 5000 : 5000000
             $(this).val(formatMoney(value) + " руб.");
             $("#autoCost").slider("value", value);
+            calculate();
         }
         
         });
