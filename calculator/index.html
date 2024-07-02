@@ -150,14 +150,14 @@
           value = parseInt(value, 10); // Преобразование строки в число
           if (value >= 5000 && value <= 5000000) {
             $("#autoCost").slider("value", value); // Обновление ползунка при изменении поля ввода
-            
+            $(this).val(formatMoney(value) + " руб.");
             calculate();
           }
           else {
             // Если значение вне допустимого диапазона, обновляем поле ввода до последнего допустимого значения
-            $(this).val(formatMoney($("#autoCost").slider("value")));
+            $(this).val(formatMoney($("#autoCost").slider("value")) + " руб.");
         }
-        $(this).val(formatMoney(value) + " руб.");
+        
         });
 
         $("#term").change(calculate);
