@@ -19,7 +19,8 @@
               <span class="text">Сумма при открытии вклада</span>
             </div>
             <div class="h2_deposit">
-              <input id="deposit_val" type="text" value="5 000 руб." />
+              <input id="deposit_val" type="text" value="5 000 руб." /> 
+            
             </div>
             <div class="com_sistem"></div>
             <div class="runner">
@@ -41,7 +42,9 @@
                   class="ui-slider-handle ui-corner-all ui-state-default"
                   style="left: 0%"
                 ></span>
+                
               </div>
+              
               <div class="err_deposit_val">от 5 000 руб.</div>
             </div>
 
@@ -71,7 +74,7 @@
       <div class="calc-block-right">
         <p class="p_ff_pts mt-0">Накопите через <span id="months">n</span></p>
         <p class="p_ff_dt">
-          <span id="finalAmount"></span><span class="rouble"></span>
+          <span id="finalAmount"></span><span class="rouble">₽</span>
         </p>
         <div class="info_text mt-15">
           <span class="text deposit_result"
@@ -80,7 +83,7 @@
         </div>
         <p class="p_ff_pts">Доход</p>
         <p class="p_ff_dt">
-          <span id="income"></span><span class="rouble"></span>
+          <span id="income"></span><span class="rouble">₽</span>
         </p>
 
         <a href="#" class="btn blue popup esia-popup-link mt-30"
@@ -110,8 +113,8 @@
 
         var termText = term === 3 ? "месяца" : "месяцев";
         $("#months").text(term + " " + termText);
-        $("#finalAmount").text(formatMoney((amount + income).toFixed(0))  + "₽");
-        $("#income").text(formatMoney(income.toFixed(0)) + "₽");
+        $("#finalAmount").text(formatMoney((amount + income).toFixed(0)));
+        $("#income").text(formatMoney(income.toFixed(0)));
       }
 
       // ЭТО КОД ДЛЯ ВЫВОДА СУММЫ С ПРОБЕЛАМИ
