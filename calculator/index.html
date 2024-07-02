@@ -157,8 +157,9 @@
             calculate();
           }
           else {
-            // Если значение вне допустимого диапазона, обновляем поле ввода до последнего допустимого значения
-            $(this).val(formatMoney($("#autoCost").slider("value")) + " руб.");
+            value = value < 5000 ? 5000 : 5000000
+            $(this).val(formatMoney(value) + " руб.");
+            $("#autoCost").slider("value", value);
         }
         
         });
