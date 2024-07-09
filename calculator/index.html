@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 	<head>
-		<link rel="stylesheet" href="styles.css" />
+		<!-- <link rel="stylesheet" href="styles.css" /> -->
 		<link
 			rel="stylesheet"
 			href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
@@ -14,14 +14,20 @@
 	<body>
 		<div class="col-xs-12 flx">
 			<style>
-      
+				.calc .pad {
+					height: auto;
+					padding: 50px;
+					padding-bottom: 10px;
+					position: relative;
+					border: 1px solid #dddddd;
+				}
 				.col-xs-12 {
 					margin-left: 15%;
 					margin-right: 15%;
 					margin-top: 15px;
 					width: 70%;
-          display: flex;
-          justify-content: space-between; 
+					display: flex;
+					justify-content: space-between;
 				}
 
 				span {
@@ -72,7 +78,14 @@
 									class="ui-slider-handle ui-corner-all ui-state-default"
 									style="left: 0%"
 								></span>
-								<style></style>
+								<style>
+									.calc .runner,
+									.range_decor,
+									.ui-slider {
+										margin-top: 20px;
+										margin-bottom: 20px;
+									}
+								</style>
 							</div>
 
 							<div class="err_deposit_val">от 5 000 руб.</div>
@@ -80,6 +93,7 @@
 						<style>
 							.deposit input,
 							.calc input {
+								border: 1px solid #fff;
 								padding: 0;
 								width: 100%;
 								font-size: 29px;
@@ -219,6 +233,46 @@
 				<a href="#" class="btn blue popup esia-popup-link mt-30"
 					>Отправить заявку</a
 				>
+
+				<style>
+					.calc-block-right .btn {
+						font-size: 20px;
+						width: 100%;
+						border-radius: 5px;
+						text-align: center;
+						display: block;
+						padding: 20px 20px;
+						max-width: 300px;
+					}
+
+					.btn.blue {
+						background-color: rgb(29, 71, 140);
+						border-color: rgb(29, 71, 140);
+						color: #fff;
+						font-weight: 300;
+						text-transform: none;
+						letter-spacing: 0;
+						-webkit-transform: translate(0%, 0%) scale(1)
+							/* translate3d(0, 0, 0) */;
+						transform: translate(0%, 0%) scale(1) /* translate3d(0, 0, 0) */;
+					}
+					.btn.blue:hover {
+						background-color: #3a70c6;
+						border-color: #3a70c6;
+						color: #fff;
+						cursor: pointer;
+						-webkit-transform: translate(0%, -2%);
+						-ms-transform: translate(0%, -2%);
+						transform: translate(0%, -2%);
+					}
+					a:focus,
+					a,
+					a:active {
+						border: none;
+						outline: none;
+						text-decoration: none;
+					}
+				</style>
 			</div>
 		</div>
 	</body>
