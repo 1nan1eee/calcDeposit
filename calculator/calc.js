@@ -1,23 +1,12 @@
 // калькулятор
 function calculate() {
+	addOptions();
 	var amount = parseInt($("#deposit_val").val().replace(/\s/g, ""), 10);
 	var term = parseInt($("#term").val(), 10);
-	var rate = 0.17;
+	var rate = checkRate(term);
 	var daysInYear = new Date().getFullYear() % 4 === 0 ? 366 : 365;
-	var daysInTerm;
-
-	// Определение количества дней в зависимости от срока
-	if (term === 3) {
-		daysInTerm = 91;
-		rate = 0.145; // 3 месяца
-	} else if (term === 6) {
-		daysInTerm = 91 * 2;
-		rate = 0.16; // 6 месяцев
-	} else if (term === 12) {
-		daysInTerm = 91 * 4;
-		rate = 0.145; // 12 месяцев
-	}
-
+	var daysInTerm= 91 * term/3;
+	
 	var income = ((amount * rate) / daysInYear) * daysInTerm;
 
 	var termText = term === 3 ? "месяца" : "месяцев";
@@ -26,10 +15,28 @@ function calculate() {
 	$("#finalAmount").text(formatMoney((amount + income).toFixed(0)));
 	$("#income").text(formatMoney(income.toFixed(0)));
 }
+//код для создания элемента выпадающего списка с месяцами
+function addOptions() {
+	var select = document.getElementById("term");
 
+	var newOption = document.createElement("option"); //добавление 3 месяца
+	newOption.value = "3";
+	newOption.text = "3 месяца";
+	select.appendChild(newOption);
+}
+//код выбора ставки
+function checkRate(term)
+{
+	switch(term){
+		case 3:
+			return 0.145;
+		default:
+			return 0.17;
+	}
+}
 //код для вывода ставки
 function formatNumber(n) {
-  return n % 1 === 0 ? n.toString() : n.toFixed(1).toString();
+	return n % 1 === 0 ? n.toString() : n.toFixed(1).toString();
 }
 // код для вывода суммы с пробелами
 function formatMoney(amount) {
