@@ -84,7 +84,7 @@ $(function () {
 		value: 3,
 		min: 3, //минимальный срок
 		max: 24,
-		step: 3,
+		step: 1,
 
 		slide: function (event, ui) {
 			$("#term_val").val(ui.value + " " + formatMonth(ui.value)); // Обновление поля ввода при изменении ползунка
@@ -96,7 +96,6 @@ $(function () {
 		var value = $(this).val().replace(/\D/g, ""); // Удаление нечисловых символов
 		value = parseInt(value, 10); // Преобразование строки в число
 		if (value >= 3 && value <= 24) {
-			value -= value % 3;
 			$("#autoTerm").slider("value", value); // Обновление ползунка при изменении поля ввода
 			$(this).val(value + " " + formatMonth(value));
 			calculate();
