@@ -3,15 +3,28 @@ function calculate() {
 	var amount = parseInt($("#deposit_val").val().replace(/\s/g, ""), 10);
 	var term = parseInt($("#term_val").val(), 10);
 	var rate = checkRate(term);
+	var today = new Date();
 	var daysInYear = new Date().getFullYear() % 4 === 0 ? 366 : 365;
-	var daysInTerm = (91 * term) / 3;
+	var daysInTerm = daysBetweenDates(today, addMonthsToDate(today, term));
 	var income = ((amount * rate) / daysInYear) * daysInTerm;
 	$("#months").text(term + " " + formatMonth(term));
 	$("#rate").text(formatNumber(rate * 100) + "%");
 	$("#finalAmount").text(formatMoney((amount + income).toFixed(0)));
 	$("#income").text(formatMoney(income.toFixed(0)));
 }
-
+function daysBetweenDates(date1, date2) {
+	// Разница в миллисекундах
+	const diffInMs = Math.abs(date2 - date1);
+	// Переводим миллисекунды в дни
+	return Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+  }
+  
+  function addMonthsToDate(date, months) {
+	const result = new Date(date);
+	result.setMonth(result.getMonth() + months);
+	return result;
+  }
+  
 //код выбора ставки
 function checkRate(term) {
 	switch (term) {
