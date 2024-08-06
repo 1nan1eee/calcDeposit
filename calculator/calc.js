@@ -3,9 +3,21 @@ function calculate() {
 	var amount = parseInt($("#deposit_val").val().replace(/\s/g, ""), 10);
 	var term = parseInt($("#term_val").val(), 10);
 	var rate = checkRate(term);
-	var today = new Date();
+	// var today = new Date();
 	var daysInYear = new Date().getFullYear() % 4 === 0 ? 366 : 365;
-	var daysInTerm = daysBetweenDates(today, addMonthsToDate(today, term));
+	// var daysInTerm = daysBetweenDates(today, addMonthsToDate(today, term));
+	var daysInTerm;
+	switch (term) {
+		case 6:
+			daysInTerm = 181;
+			break;
+		case 12:
+			daysInTerm = 367;
+			break;
+		default:
+			daysInTerm = 90;
+			break;
+	}
 	var income = ((amount * rate) / daysInYear) * daysInTerm;
 	$("#months").text(term + " " + formatMonth(term));
 	$("#rate").text(formatNumber(rate * 100) + "%");
@@ -30,8 +42,10 @@ function checkRate(term) {
 	switch (term) {
 		case 3:
 			return 0.145;
+		case 12:
+			return 0.145;
 		default:
-			return 0.17;
+			return 0.16;
 	}
 }
 //код для вывода ставки
