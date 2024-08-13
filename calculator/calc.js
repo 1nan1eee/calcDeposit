@@ -2,12 +2,14 @@
 function calculate() {
 	var amount = parseInt($("#deposit_val").val().replace(/\s/g, ""), 10);
 	var term = parseInt($("#term_val").val(), 10);
-	var rate = checkRate(term);
+	var rate = checkRate(getMaxLessThan(term));
+	var defaultRate = 0.07;
 	var date = new Date().getFullYear();
 	var daysInYear = date % 4 === 0 ? 366 : 365;
 	var daysInTerm;
 	var daysUntilEndOfYear = getDaysUntilEndOfYear();
-	switch (term) {
+
+	switch (getMaxLessThan(term)) {
 		case 3:
 			daysInTerm = 90;
 			break;
@@ -17,23 +19,37 @@ function calculate() {
 		case 12:
 			daysInTerm = 367;
 			break;
-		default:
-			daysInTerm = term * 30;
-			break;
 	}
+
+	var daysOutTerm =
+		term === getMaxLessThan(term) ? 0 : (term - getMaxLessThan(term)) * 30;
 	if (daysUntilEndOfYear >= daysInTerm) {
-		var income = ((amount * rate) / daysInYear) * daysInTerm;
+		var income =
+			(amount / daysInYear) * (rate * daysInTerm + defaultRate * daysOutTerm);
+		// ((amount * rate) / daysInYear) * daysInTerm +
+		// ((amount * defaultRate) / daysInYear) * daysOutTerm;
 	} else {
 		var daysInNextYear = (date + 1) % 4 === 0 ? 366 : 365;
 		var income =
-			((amount * rate) / daysInYear) * daysUntilEndOfYear +
-			((amount * rate) / daysInNextYear) * (daysInTerm - daysUntilEndOfYear);
+			amount *
+			(rate *
+				(daysUntilEndOfYear / daysInYear +
+					(daysInTerm - daysUntilEndOfYear) / daysInNextYear) +
+				(defaultRate / daysInNextYear) * daysOutTerm);
+		// ((amount * rate) / daysInYear) * daysUntilEndOfYear +((amount * rate) / daysInNextYear) * (daysInTerm - daysUntilEndOfYear) + ((amount * defaultRate) / daysInNextYear) * daysOutTerm;
 	}
+
 	$("#months").text(term + " " + formatMonth(term));
 	$("#rate").text(formatNumber(rate * 100) + "%");
 	$("#finalAmount").text(formatMoney((amount + income).toFixed(0)));
 	$("#income").text(formatMoney(income.toFixed(0)));
 }
+
+function getMaxLessThan(num) {
+	const numbers = [3, 6, 12]; //сроки, для которых установлена ставка
+	return Math.max(...numbers.filter((x) => x <= num));
+}
+
 function getDaysUntilEndOfYear() {
 	const today = new Date(); // Текущая дата
 	const endOfYear = new Date(today.getFullYear(), 11, 31); // Последний день года (31 декабря)
@@ -50,24 +66,18 @@ function getDaysUntilEndOfYear() {
 //код выбора ставки
 function checkRate(term) {
 	switch (term) {
-		case 3:
-			return 0.145;
-			break;
-		case 12:
-			return 0.145;
-			break;
 		case 6:
 			return 0.16;
 			break;
 		default:
-			return 0.07;
+			return 0.145;
 			break;
 	}
 }
 //код для вывода ставки
 function formatNumber(n) {
 	n = parseFloat(n.toPrecision(12));
-	return (n % 1) === 0 ? n.toString() : n.toFixed(1).toString();
+	return n % 1 === 0 ? n.toString() : n.toFixed(1).toString();
 }
 // код для вывода суммы с пробелами
 function formatMoney(amount) {
