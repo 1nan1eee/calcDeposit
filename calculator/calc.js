@@ -18,7 +18,7 @@ function calculate() {
 			daysInTerm = 367;
 			break;
 		default:
-			daysInTerm = 90;
+			daysInTerm = term * 30;
 			break;
 	}
 	if (daysUntilEndOfYear >= daysInTerm) {
