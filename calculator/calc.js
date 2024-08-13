@@ -60,13 +60,14 @@ function checkRate(term) {
 			return 0.16;
 			break;
 		default:
-			return 0.17;
+			return 0.07;
 			break;
 	}
 }
 //код для вывода ставки
 function formatNumber(n) {
-	return n % 1 === 0 ? n.toString() : n.toFixed(1).toString();
+	n = parseFloat(n.toPrecision(12));
+	return (n % 1) === 0 ? n.toString() : n.toFixed(1).toString();
 }
 // код для вывода суммы с пробелами
 function formatMoney(amount) {
