@@ -40,12 +40,10 @@ function daysBetweenDates(date1, date2) {
 //код выбора ставки
 function checkRate(term) {
 	switch (term) {
-		case 3:
-			return 0.145;
-		case 12:
-			return 0.145;
-		default:
+		case 6:
 			return 0.16;
+		default:
+			return 0.145;
 	}
 }
 //код для вывода ставки
