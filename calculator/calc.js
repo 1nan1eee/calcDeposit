@@ -3,11 +3,14 @@ function calculate() {
 	var amount = parseInt($("#deposit_val").val().replace(/\s/g, ""), 10);
 	var term = parseInt($("#term_val").val(), 10);
 	var rate = checkRate(term);
-	// var today = new Date();
-	var daysInYear = new Date().getFullYear() % 4 === 0 ? 366 : 365;
-	// var daysInTerm = daysBetweenDates(today, addMonthsToDate(today, term));
+	var date = new Date().getFullYear();
+	var daysInYear = date % 4 === 0 ? 366 : 365;
 	var daysInTerm;
+	var daysUntilEndOfYear = getDaysUntilEndOfYear();
 	switch (term) {
+		case 3:
+			daysInTerm = 90;
+			break;
 		case 6:
 			daysInTerm = 181;
 			break;
@@ -18,34 +21,47 @@ function calculate() {
 			daysInTerm = 90;
 			break;
 	}
-	var income = ((amount * rate) / daysInYear) * daysInTerm;
+	if (daysUntilEndOfYear >= daysInTerm) {
+		var income = ((amount * rate) / daysInYear) * daysInTerm;
+	} else {
+		var daysInNextYear = (date + 1) % 4 === 0 ? 366 : 365;
+		var income =
+			((amount * rate) / daysInYear) * daysUntilEndOfYear +
+			((amount * rate) / daysInNextYear) * (daysInTerm - daysUntilEndOfYear);
+	}
 	$("#months").text(term + " " + formatMonth(term));
 	$("#rate").text(formatNumber(rate * 100) + "%");
 	$("#finalAmount").text(formatMoney((amount + income).toFixed(0)));
 	$("#income").text(formatMoney(income.toFixed(0)));
 }
-function daysBetweenDates(date1, date2) {
-	// Разница в миллисекундах
-	const diffInMs = Math.abs(date2 - date1);
-	// Переводим миллисекунды в дни
-	return Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-  }
-  
-  function addMonthsToDate(date, months) {
-	const result = new Date(date);
-	result.setMonth(result.getMonth() + months);
-	return result;
-  }
-  
+function getDaysUntilEndOfYear() {
+	const today = new Date(); // Текущая дата
+	const endOfYear = new Date(today.getFullYear(), 11, 31); // Последний день года (31 декабря)
+
+	// Разница в миллисекундах между текущей датой и концом года
+	const differenceInTime = endOfYear - today;
+
+	// Преобразуем миллисекунды в дни
+	const differenceInDays = Math.ceil(differenceInTime / (1000 * 60 * 60 * 24));
+
+	return differenceInDays;
+}
+
 //код выбора ставки
 function checkRate(term) {
 	switch (term) {
 		case 3:
 			return 0.145;
+			break;
 		case 12:
 			return 0.145;
-		default:
+			break;
+		case 6:
 			return 0.16;
+			break;
+		default:
+			return 0.17;
+			break;
 	}
 }
 //код для вывода ставки

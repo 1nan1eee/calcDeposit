@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<script src="calc.js"></script>
+  </head>
+  <body>
+    <div class="col-xs-calc flx">
+      <div class="calc-block-left">
+        <div class="calc">
+          <div class="pad calc_block active">
+            <div class="info_text qestion-line1">
+              <span class="text">Сумма при открытии вклада</span>
+            </div>
+            <div class="h2_deposit">
+              <input id="deposit_val" type="text" value="5 000 руб." /> 
+            
+            </div>
+            <div class="com_sistem"></div>
+            <div class="runner">
+              <div
+                id="autoCost"
+                class="range_decor ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
+                min="5000"
+                max="5000000"
+                min-value-data="5000"
+                value="5000";
+                step="500"
+              >
+                <div
+                  class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min"
+                  style="width: 0%"
+                ></div>
+                <span
+                  tabindex="0"
+                  class="ui-slider-handle ui-corner-all ui-state-default"
+                  style="left: 0%"
+                ></span>
+                
+              </div>
+              
+              <div class="err_deposit_val">от 5 000 руб.</div>
+            </div>
+
+            <div class="info_text qestion-line1">
+              <br>
+              <span class="text">Срок вклада</span>
+            </div>
+            <!-- список сроков по вкладам -->
+            <div class="select-wrapper-popup">
+              <div class="popup-list">
+                <select name="select-popup-list" id="term_val" class="select-popup">
+                  <option value="3">3 месяца</option>
+                  <option value="6">6 месяцев</option>
+                  <option value="12">12 месяцев</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="com_sistem"></div>
+
+            <p class="info-h">
+              Информация носит справочный характер, не является офертой.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="calc-block-right">
+        <p class="p_ff_pts mt-0">Накопите через <span id="months">n</span></p>
+        <p class="p_ff_dt">
+          <span id="finalAmount"></span><span class="rouble">₽</span>
+        </p>
+        <div class="info_text mt-15">
+          <span class="text deposit_result"
+            >При ставке <span id = "rate" >17%</span> годовых</span
+          >
+        </div>
+        <p class="p_ff_pts">Доход</p>
+        <p class="p_ff_dt">
+          <span id="income"></span><span class="rouble">₽</span>
+        </p>
+
+        <a href="#" class="btn blue popup esia-popup-link mt-30"
+          >Отправить заявку</a
+        >
+      </div>
+    </div>
+  </body>
+</html>
