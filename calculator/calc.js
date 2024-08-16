@@ -28,6 +28,8 @@ function calculate() {
 		if($('#izhcom_card').is(':checked')){
 			var income;
 			for (let i = 0; i < term; i++) {
+				if (getMaxLessThan(term) < i)
+					rate = defaultRate;
 				income =
 					(amount / daysInYear) * (rate * 30);
 				totalIncome = totalIncome + income;
