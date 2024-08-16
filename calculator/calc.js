@@ -8,6 +8,7 @@ function calculate() {
 	var daysInYear = date % 4 === 0 ? 366 : 365;
 	var daysInTerm;
 	var daysUntilEndOfYear = getDaysUntilEndOfYear();
+	var totalIncome = 0;
 
 	switch (getMaxLessThan(term)) {
 		case 3:
@@ -24,18 +25,48 @@ function calculate() {
 	var daysOutTerm =
 		term === getMaxLessThan(term) ? 0 : (term - getMaxLessThan(term)) * 30;
 	if (daysUntilEndOfYear >= daysInTerm) {
-		var income =
-			(amount / daysInYear) * (rate * daysInTerm + defaultRate * daysOutTerm);
+		if($('#izhcom_card').is(':checked')){
+			var income;
+			for (let i = 0; i < term; i++) {
+				income =
+					(amount / daysInYear) * (rate * 30);
+				totalIncome = totalIncome + income;
+				amount = amount + income;
+				console.log(income);
+			}
+			income = totalIncome;
+			amount = amount - income;
+		}
+		else {
+			var income =
+				(amount / daysInYear) * (rate * daysInTerm + defaultRate * daysOutTerm);
+		}
+		
 		// ((amount * rate) / daysInYear) * daysInTerm +
 		// ((amount * defaultRate) / daysInYear) * daysOutTerm;
 	} else {
 		var daysInNextYear = (date + 1) % 4 === 0 ? 366 : 365;
-		var income =
+		if($('#izhcom_card').is(':checked')){
+			for (let i = 0; i < term; i++) {
+				income =
+					amount *
+					(rate *
+						(daysUntilEndOfYear / daysInYear +
+							(daysInTerm - daysUntilEndOfYear) / daysInNextYear) +
+						(defaultRate / daysInNextYear) * daysOutTerm);
+				totalIncome = totalIncome + income;
+				amount = amount + income;
+			}
+			income = totalIncome;
+		}
+		else {
+			var income =
 			amount *
 			(rate *
 				(daysUntilEndOfYear / daysInYear +
 					(daysInTerm - daysUntilEndOfYear) / daysInNextYear) +
 				(defaultRate / daysInNextYear) * daysOutTerm);
+		}
 		// ((amount * rate) / daysInYear) * daysUntilEndOfYear +((amount * rate) / daysInNextYear) * (daysInTerm - daysUntilEndOfYear) + ((amount * defaultRate) / daysInNextYear) * daysOutTerm;
 	}
 
